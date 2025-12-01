@@ -53,26 +53,40 @@ Participants follow along in Jupyter notebooks (hosted on Colab — no installat
 **Allen Downey** — Principal Data Scientist at PyMC Labs and Professor Emeritus at Olin College. Author of *Think Python*, *Think Bayes*, and *Probably Overthinking It*. Allen holds a Ph.D. in Computer Science from UC Berkeley and degrees from MIT.
 
 
+
 ## Setup Instructions
+
+To get the materials for the workshop and run the notebook, there are two options: run on Colab or set up a local installation.
 
 ### Recommended: Google Colab (No Installation Required)
 
-We **strongly recommend** running the notebooks on Google Colab, which requires no local installation:
+We strongly recommend running the notebooks on Google Colab, which requires no local installation:
 
 - [Open notebook (no solutions) in Colab](https://colab.research.google.com/github/AllenDowney/BDAwithPyMC/blob/main/notebooks/01_beta_binomial.ipynb)
 - [Open notebook (with solutions) in Colab](https://colab.research.google.com/github/AllenDowney/BDAwithPyMC/blob/main/solutions/01_beta_binomial.ipynb)
 
-The default Colab environment has everything we need except Preliz, which will get installed automatically when you run the notebook.
+The default Colab environment has everything we need except PreliZ, which gets installed automatically when you run the notebook.
 
-If you run the notebook without solutions, you will get errors because some of the examples don't run unless you have completed the exercises.
+If you run the no-solutions notebook, you get errors because some of the examples don't work until you do the exercises.
 
 
 ### Alternative: Local Installation with Conda
 
-If you prefer to run locally, we recommend using conda and the provided Makefile:
+If you prefer to run locally, you can either clone the repository or download it as a zip file:
+
+**Clone with Git:**
+```bash
+git clone https://github.com/AllenDowney/BDAwithPyMC.git
+```
+
+**Or download as a zip file:**
+- [Download zip file](https://github.com/AllenDowney/BDAwithPyMC/archive/refs/heads/main.zip)
+
+Then to create an environment, we recommend using conda and the provided Makefile:
 
 1. **Create the conda environment:**
    ```bash
+   cd BDAwithPyMC
    make create_environment
    ```
 
@@ -89,4 +103,3 @@ If you prefer to run locally, we recommend using conda and the provided Makefile
 The Makefile will:
 - Create a conda environment with core packages (ArviZ, PyTensor, PyMC)
 - Install additional dependencies from `requirements.txt` (Jupyter, Matplotlib, PreliZ, etc.)
-
