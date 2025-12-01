@@ -1,0 +1,19 @@
+name: BDAwithPyMC
+
+channels:
+  - conda-forge
+dependencies:
+  - python
+  - arviz
+  - pip
+  - pytensor>=2.21.0
+  - pymc>=5.15.0
+  - pip:
+    - graphviz
+    - jupyter
+    - matplotlib
+    - numpy
+    - pandas
+    - preliz
+    - pydot
+    - scipy

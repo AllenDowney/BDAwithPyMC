@@ -1,0 +1,12 @@
+arviz
+graphviz
+jupyter
+matplotlib
+numpy
+pandas
+preliz
+pydot
+scipy
+
+
+
