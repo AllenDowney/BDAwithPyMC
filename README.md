@@ -1,5 +1,9 @@
 # Bayesian Decision Analysis with PyMC
 
+
+[Here is the video of the workshop](https://www.youtube.com/watch?v=6yVIlWGNoGI) (PyData Global 2025). This is one of [my workshops and tutorials](https://allendowney.github.io/#workshops).
+
+
 Material for a workshop at [PyData Global 2025](https://pydata.org/global2025)
 
 **Bayesian Decision Analysis with PyMC: Beyond A/B Testing**
