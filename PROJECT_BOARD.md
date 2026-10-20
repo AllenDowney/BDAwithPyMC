@@ -8,7 +8,7 @@ Numbered tasks for tracking work. Each task has a permanent number; add new task
 
 ## Task 1: Refresh
 
-**Status:** In progress
+**Status:** DONE (2026-10-20)
 
 **Context:** BDAwithPyMC is a "current" workshop (GreenTeaPress Task 24). The guide is the "Refresh checklist" in `~/GreenTeaPress/plans/workshops.md`; BayesMadeSimple and CompStats are worked examples. 15 stars. Given at PyData Global 2025 (2025-12-10; [recording](https://www.youtube.com/watch?v=6yVIlWGNoGI), 1:21) and as the first session of the PyMC Labs course Applied Bayesian Modeling. The notebook runs PyMC sampling, so CI must stay fast (fewer draws in tests if needed).
 
@@ -38,7 +38,7 @@ Numbered tasks for tracking work. Each task has a permanent number; add new task
 **3. Colab**
 - [x] "Click here to run this notebook on Colab" cell after the title; the solutions also link to the version with blanks. The generator (`remove_soln.py`) rewrites the cell for the version with blanks (2026-10-20)
 - [x] Colab links in the README's notebook table (step 5)
-- [ ] Allen runs one notebook on Colab end to end
+- [x] Allen ran the notebook on Colab end to end (2026-10-20)
 
 **4. Text**
 - [x] Typos, broken links (2026-10-20): codespell finds nothing; read all the markdown and code. Fixed: "for example that rate does not change" → "for example, that the rate", a link to Bill Engels's tutorial (the data used to download from it), single → double quotes in one cell (the 2025 style), trailing spaces. `np.set_printoptions(legacy="1.25")` was already in the notebook (cell 4); the duplicate added in step 1 removed
@@ -53,11 +53,11 @@ Numbered tasks for tracking work. Each task has a permanent number; add new task
 - [x] SEO checklist in a test build (scratch copy): sitemap lists only the 2 pages; each page has one description, one `og:description`, `rel="canonical"`; page titles differ from the site title; page-view counter in `extra_footer`; social image is the *Think Bayes* 2e cover (200); all 26 plots and 3 model graphs render
 - [x] Allen approved the two descriptions and the page title (2026-10-20)
 - [x] Published (2026-10-20): `./build.sh publish` to `gh-pages` (Pages turned on with source `gh-pages` /, no Jekyll `_config.yml` to delete); landing page, notebook page and sitemap return 200; `Sitemap:` line in `~/AllenDowney.github.io/robots.txt` (pushed)
-- [ ] Allen submits the sitemap in Search Console (https://allendowney.github.io/BDAwithPyMC/sitemap.xml); then tick in GreenTeaPress Task 22
+- [x] Allen submitted the sitemap in Search Console (2026-10-20); ticked in GreenTeaPress Task 22
 - [x] Hub entry now links the site instead of the repo (`~/AllenDowney.github.io/index.html`, pushed). Repo website set to the site and topic `jupyter-book` added on GitHub and in GreenTeaPress `scripts/repo_about.sh` (BDAwithPyMC removed from `NO_SITE`; left uncommitted there, as in CompStats). Description unchanged. README links the site
 
 **7. Close**
-- [ ] Tag `2026-refresh`; note in GreenTeaPress Task 24
+- [x] Tag `2026-refresh` pushed; note in GreenTeaPress Task 24 (2026-10-20)
 
 ### Inventory (2026-10-20)
 

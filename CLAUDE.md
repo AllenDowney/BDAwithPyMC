@@ -19,6 +19,7 @@ Data: `data/batting_2023.csv` (MLB batting, 2023).
 
 - `pydata-global-2025`: the code in the PyData Global 2025 recording (the last commit before the event).
 - `pre-refresh-2026`: the state before the 2026 refresh.
+- `2026-refresh`: the refreshed version.
 
 ## Testing
 
