@@ -1,0 +1,42 @@
+name: tests
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  schedule:
+    # https://cron.help/#0_0_1_*_*
+    # min hour day-of-month month day-of-week
+    - cron: "0 0 1 * *"
+  workflow_dispatch:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+
+      # pm.model_to_graphviz needs the Graphviz binaries as well as the
+      # Python package
+      - name: Install Graphviz
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y graphviz
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      # Only the solutions: the version with blanks fails until the
+      # exercises are done
+      - name: Run tests
+        run: |
+          pytest --nbmake solutions/

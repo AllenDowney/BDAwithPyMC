@@ -1,5 +1,7 @@
 # Bayesian Decision Analysis with PyMC
 
+[![tests](https://github.com/AllenDowney/BDAwithPyMC/actions/workflows/tests.yml/badge.svg)](https://github.com/AllenDowney/BDAwithPyMC/actions/workflows/tests.yml)
+
 
 [Here is the video of the workshop](https://www.youtube.com/watch?v=6yVIlWGNoGI) (PyData Global 2025). This is one of [my workshops and tutorials](https://allendowney.github.io/#workshops).
 
@@ -58,52 +60,39 @@ Participants follow along in Jupyter notebooks (hosted on Colab — no installat
 
 
 
-## Setup Instructions
+## Running the notebooks
 
-To get the materials for the workshop and run the notebook, there are two options: run on Colab or set up a local installation.
+### On Colab (recommended)
 
-### Recommended: Google Colab (No Installation Required)
+Colab needs no installation:
 
-We strongly recommend running the notebooks on Google Colab, which requires no local installation:
+- [Open the notebook (with blanks for the exercises) on Colab](https://colab.research.google.com/github/AllenDowney/BDAwithPyMC/blob/main/notebooks/01_beta_binomial.ipynb)
+- [Open the notebook (with solutions) on Colab](https://colab.research.google.com/github/AllenDowney/BDAwithPyMC/blob/main/solutions/01_beta_binomial.ipynb)
 
-- [Open notebook (no solutions) in Colab](https://colab.research.google.com/github/AllenDowney/BDAwithPyMC/blob/main/notebooks/01_beta_binomial.ipynb)
-- [Open notebook (with solutions) in Colab](https://colab.research.google.com/github/AllenDowney/BDAwithPyMC/blob/main/solutions/01_beta_binomial.ipynb)
+Colab has everything the notebook needs except PreliZ, which the first code cell installs. The notebook downloads the data it needs.
 
-The default Colab environment has everything we need except PreliZ, which gets installed automatically when you run the notebook.
+The version with blanks raises errors until you do the exercises.
 
-If you run the no-solutions notebook, you get errors because some of the examples don't work until you do the exercises.
+### On your computer
 
+Clone the repository (or [download it as a zip file](https://github.com/AllenDowney/BDAwithPyMC/archive/refs/heads/main.zip)):
 
-### Alternative: Local Installation with Conda
-
-If you prefer to run locally, you can either clone the repository or download it as a zip file:
-
-**Clone with Git:**
 ```bash
 git clone https://github.com/AllenDowney/BDAwithPyMC.git
+cd BDAwithPyMC
 ```
 
-**Or download as a zip file:**
-- [Download zip file](https://github.com/AllenDowney/BDAwithPyMC/archive/refs/heads/main.zip)
+Then either install the requirements with pip (Python 3.12 or later):
 
-Then to create an environment, we recommend using conda and the provided Makefile:
+```bash
+pip install -r requirements-dev.txt
+```
 
-1. **Create the conda environment:**
-   ```bash
-   cd BDAwithPyMC
-   make create_environment
-   ```
+or create a conda environment with [mamba](https://mamba.readthedocs.io/) (or conda):
 
-2. **Activate the environment:**
-   ```bash
-   conda activate BDAwithPyMC
-   ```
+```bash
+mamba env create -f environment.yml
+mamba activate BDAwithPyMC
+```
 
-3. **Install remaining requirements:**
-   ```bash
-   make requirements
-   ```
-
-The Makefile will:
-- Create a conda environment with core packages (ArviZ, PyTensor, PyMC)
-- Install additional dependencies from `requirements.txt` (Jupyter, Matplotlib, PreliZ, etc.)
+and run `jupyter lab`.

@@ -18,4 +18,6 @@ Data: `data/batting_2023.csv` (MLB batting, 2023).
 
 ## Testing
 
-Environment: `mamba env create -f environment.yml` (name `BDAwithPyMC`). The notebook runs PyMC sampling, so keep CI fast (fewer draws in tests). To be set up in step 2 of the refresh: `pytest --nbmake`.
+Environment: `mamba env create -f environment.yml` (name `BDAwithPyMC`). Tests: `pytest --nbmake solutions/` (about 1 minute; CI in `.github/workflows/tests.yml`). The version with blanks isn't tested; it fails until the exercises are done.
+
+Keep PyMC 5 / ArviZ 0.x and `preliz<0.23` while Colab has PyMC 5.28 (see `PROJECT_BOARD.md`, Decisions). After editing the solutions, run them, save them with outputs, and regenerate the version with blanks (`cd notebooks; make`).

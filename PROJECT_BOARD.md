@@ -18,20 +18,22 @@ Numbered tasks for tracking work. Each task has a permanent number; add new task
 - [x] Tags created locally (2026-10-20): `pydata-global-2025` at `02f10e6` (2025-12-01, "Adding batting data"; the last commit before the event), `pre-refresh-2026` at `7e34a9b`
 - [x] Tags pushed (2026-10-20). No tag for the PyMC Labs session (not publicly recorded)
 - [x] Inventory (below)
-- [ ] Environment: an old `BDAwithPyMC` conda env exists; recreate it from the new `environment.yml` in step 1
+- [x] Environment (2026-10-20): `mamba env create` of the full `environment.yml` timed out after 20 minutes; without the site build tools it took 53 s (the tools go in with `mamba install` in step 6). Python 3.12.15, PyMC 5.28.5, PyTensor 2.38.3, ArviZ 0.23.4, PreliZ 0.22.0, NumPy 2.4, pandas 3.0, Matplotlib 3.10.9, SciPy 1.18, numba 0.65
 
 **1. Runs in a current environment**
-- [ ] `environment.yml`, `requirements.txt`, `requirements-dev.txt`
-- [ ] First code cell installs PreliZ if missing and downloads `batting_2023.csv` if missing
-- [ ] Breakage and deprecation warnings (scratch runs with warnings as errors)
-- [ ] `np.set_printoptions(legacy='1.25')`
-- [ ] Data URL: the notebook downloads `batting_2023.csv` from a third-party repo (`bwengals/pydata_global_2024_GPs`); use the copy in this repo
-- [ ] Setup instructions: Colab first, then pip or mamba
+- [x] `environment.yml` (Python 3.12, conda-forge, `pymc>=5.28,<6`, `arviz<1`, `matplotlib<3.11` as in SurveyDataPyMC, `preliz<0.23`, python-graphviz, pytest, nbmake, the site build tools), `requirements.txt` (the same, unpinned otherwise), `requirements-dev.txt`; root `Makefile` and `pixi.toml` deleted (2026-10-20)
+- [x] Install cell: `%pip install -q "preliz<0.23"` if PreliZ is missing (Decisions: PreliZ). The notebook downloads `batting_2023.csv` (cell before the baseball model)
+- [x] Breakage and warnings (2026-10-20): none. The solutions run with Deprecation/Future/PendingDeprecation/User/Runtime warnings as errors, and with no stderr output except PyMC's sampling messages. Not checked in a Colab-matched env (pandas 2.2, NumPy 2.1, ArviZ 0.22); the Colab run in step 3 covers it
+- [x] `np.set_printoptions(legacy="1.25")` in the imports cell; solutions re-run and saved with outputs
+- [x] Data URL: now this repo's `data/batting_2023.csv`; the downloaded copies are in `.gitignore`
+- [x] Simulated campaigns seeded (`rng = np.random.default_rng(17)`, `pm.draw(dist, random_seed=rng)`); sampling not seeded (Decisions)
+- [x] Title cell: links the PyMC Labs course page instead of `pymc-labs/pymc-workshop`; the PreliZ/Numba note dropped (Decisions)
+- [x] Setup instructions in the README: Colab first, then pip or mamba (the rest of the README is step 5)
 
 **2. Tests and CI**
-- [ ] `pytest --nbmake`, with fewer draws in CI
-- [ ] `.github/workflows/tests.yml`
-- [ ] Status badge in the README
+- [x] `pytest --nbmake solutions/` (2026-10-20): passes, 34 s locally (80 s for a cold run). No fewer-draws hook: an IPython startup file that cut `pm.sample` to 200 + 200 saved only 30 s (most of the time is compiling) and added r-hat warnings, so it was dropped. The version with blanks isn't tested (Decisions); it fails in 13 cells until the exercises are done
+- [ ] `.github/workflows/tests.yml` (push to main, PR, monthly, manual; Python 3.12; apt Graphviz for `model_to_graphviz`; pip; 20-minute timeout; checkout@v5, setup-python@v6). First run:
+- [x] Status badge in the README
 
 **3. Colab**
 - [ ] "Click here to run this notebook on Colab" cell; the solution notebook links to the version with blanks
@@ -91,12 +93,17 @@ The notebook has 8 `pm.sample()` calls (default 1000 tune + 1000 draws, 4 chains
 - Tags: push `pydata-global-2025` and `pre-refresh-2026`; no tag for the PyMC Labs session.
 - Setup: the checklist standard (`environment.yml`, `requirements.txt`, `requirements-dev.txt`); delete the root `Makefile` and `pixi.toml` (step 1).
 - Layout: keep `notebooks/` (with blanks) and `solutions/`, so the Colab links in the video keep working.
+- CI speed: measure first; a hidden hook only if it's slow (it isn't; see step 2).
+- Seeds: seed the simulated data, not the sampling.
+- Title cell: link the PyMC Labs course page; drop the Colab/Numba note.
+- PreliZ: pin `preliz<0.23`. PreliZ 0.26+ needs PyTensor 3 (via `pytensor_distributions`), which breaks Colab's PyMC 5.28 (PyTensor 2.38); 0.23+ needs numba 0.62 (Colab has 0.61.2), which is where the "incompatible Numba" warning came from. 0.22 installs cleanly. Revisit when Colab moves to PyMC 6 / ArviZ 1 (as in SurveyDataPyMC).
+- Tests: the solutions only.
 
 ### Content issues
 
 (For Allen to decide.)
 
-1. The title cell says the notebook "is based on the first notebook of the Bayesian Modeling Workshop offered by PyMC Labs" and links `pymc-labs/pymc-workshop` (a private repo?). Workshops plan: PyMC Labs links in READMEs are undecided.
+1. Resolved 2026-10-20 (Allen): the title cell links the course page, https://www.pymc-labs.com/courses/applied-bayesian-modeling. PyMC Labs links in the README: still undecided (workshops plan).
 2. The README still says "Material for a workshop at PyData Global 2025" and the setup section uses the root `Makefile` and conda.
 3. Two commits on 2026-01-09 (after PyData Global) changed the notebook: a note about installing PreliZ on Colab, `az.plot_posterior(diff)` without `var_names`, and dropped comments on the hyperpriors. Were these for the PyMC Labs session?
 4. Resolved 2026-10-20: `plan.md` "Future work" moved to Task 2.

@@ -207,3 +207,7 @@ marimo/_lsp/
 __marimo__/
 
 .vscode/
+
+# downloaded by the notebooks
+notebooks/batting_2023.csv
+solutions/batting_2023.csv

@@ -1,12 +1,8 @@
-arviz
-graphviz
-jupyter
-matplotlib
 numpy
 pandas
-preliz
-pydot
+matplotlib<3.11
 scipy
-
-
-
+pymc>=5.28,<6
+arviz<1
+preliz<0.23
+graphviz
