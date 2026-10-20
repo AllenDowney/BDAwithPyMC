@@ -32,18 +32,18 @@ Numbered tasks for tracking work. Each task has a permanent number; add new task
 
 **2. Tests and CI**
 - [x] `pytest --nbmake solutions/` (2026-10-20): passes, 34 s locally (80 s for a cold run). No fewer-draws hook: an IPython startup file that cut `pm.sample` to 200 + 200 saved only 30 s (most of the time is compiling) and added r-hat warnings, so it was dropped. The version with blanks isn't tested (Decisions); it fails in 13 cells until the exercises are done
-- [ ] `.github/workflows/tests.yml` (push to main, PR, monthly, manual; Python 3.12; apt Graphviz for `model_to_graphviz`; pip; 20-minute timeout; checkout@v5, setup-python@v6). First run:
+- [x] `.github/workflows/tests.yml` (push to main, PR, monthly, manual; Python 3.12; apt Graphviz for `model_to_graphviz`; pip; 20-minute timeout; checkout@v5, setup-python@v6). First run passed in 1 min 24 s: https://github.com/AllenDowney/BDAwithPyMC/actions/runs/39502765773
 - [x] Status badge in the README
 
 **3. Colab**
-- [ ] "Click here to run this notebook on Colab" cell; the solution notebook links to the version with blanks
-- [ ] Colab links in the README's notebook table
+- [x] "Click here to run this notebook on Colab" cell after the title; the solutions also link to the version with blanks. The generator (`remove_soln.py`) rewrites the cell for the version with blanks (2026-10-20)
+- [ ] Colab links in the README's notebook table (step 5; the setup section already has both)
 - [ ] Allen runs one notebook on Colab end to end
 
 **4. Text**
-- [ ] Typos, wrong docstrings, broken links (codespell, and read the markdown), in both versions
-- [ ] Everything else under "Content issues"
-- [ ] Notebook layout: title cell, Colab cell, copyright and license at the end
+- [x] Typos, broken links (2026-10-20): codespell finds nothing; read all the markdown and code. Fixed: "for example that rate does not change" → "for example, that the rate", a link to Bill Engels's tutorial (the data used to download from it), single → double quotes in one cell (the 2025 style), trailing spaces. `np.set_printoptions(legacy="1.25")` was already in the notebook (cell 4); the duplicate added in step 1 removed
+- [x] Everything else under "Content issues"; 5–9 decided and applied (2026-10-20)
+- [x] Notebook layout (2026-10-20): title cell with a one-line subtitle (the PyMC Labs sentence); Colab cell; copyright ("2025–2026") and license (code MIT, text CC BY-NC-SA 4.0) in the last cell, replacing an empty one. The only H1 is the title. Same in both versions (made by the generator). nbconvert's timing metadata stripped (the generator drops it too)
 
 **5. README in the standard shape**
 - [ ] README rewritten
@@ -104,9 +104,14 @@ The notebook has 8 `pm.sample()` calls (default 1000 tune + 1000 draws, 4 chains
 (For Allen to decide.)
 
 1. Resolved 2026-10-20 (Allen): the title cell links the course page, https://www.pymc-labs.com/courses/applied-bayesian-modeling. PyMC Labs links in the README: still undecided (workshops plan).
-2. The README still says "Material for a workshop at PyData Global 2025" and the setup section uses the root `Makefile` and conda.
-3. Two commits on 2026-01-09 (after PyData Global) changed the notebook: a note about installing PreliZ on Colab, `az.plot_posterior(diff)` without `var_names`, and dropped comments on the hyperpriors. Were these for the PyMC Labs session?
+2. The README still says "Material for a workshop at PyData Global 2025" (step 5). Its setup section was rewritten in step 1.
+3. Resolved 2026-10-20: yes. The pymc-workshop commit of the same day is "Update for January workshop" (`bf7013e`); no tag (Decisions).
 4. Resolved 2026-10-20: `plan.md` "Future work" moved to Task 2.
+5. Resolved 2026-10-20 (Allen): reworded. "Its mean is about 9%, a little above the observed conversion rate, 8%, because the prior pulls it up. The 94% HDI extends from about 4% to 15%." (Exact for Beta(10, 97): mean 9.3%, HDI 4.4% to 14.6%.)
+6. Resolved 2026-10-20 (Allen): "…is asymptotically optimal: as the experiment goes on, its regret (the conversions lost by using inferior versions) grows as slowly as possible." The old sentence ("maximizes expected utility given current beliefs") describes the greedy choice; Thompson sampling matches the Lai–Robbins regret lower bound for Bernoulli bandits (Kaufmann, Korda & Munos 2012, https://arxiv.org/abs/1205.4217), and the Bayes-optimal policy for discounted reward is the Gittins index. The same sentence is in pymc-workshop `Session1-Prior_and_Posterior` (from 2025-08); not changed there.
+7. Resolved 2026-10-20 (Allen): sections under each Part are `###`, all headings in sentence case.
+8. Resolved 2026-10-20 (Allen): left as is ("speak for itself").
+9. Resolved 2026-10-20 (Allen): `data/batting_2023.csv` had literal escapes (`P\xc3\xa9rez`, `O\'Neill`); now UTF-8, read with a plain `pd.read_csv` (checked: same DataFrame as the old two-step read). Old notebooks (the tags) still download the original from `bwengals/pydata_global_2024_GPs`.
 
 ---
 
