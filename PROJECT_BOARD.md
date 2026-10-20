@@ -37,7 +37,7 @@ Numbered tasks for tracking work. Each task has a permanent number; add new task
 
 **3. Colab**
 - [x] "Click here to run this notebook on Colab" cell after the title; the solutions also link to the version with blanks. The generator (`remove_soln.py`) rewrites the cell for the version with blanks (2026-10-20)
-- [ ] Colab links in the README's notebook table (step 5; the setup section already has both)
+- [x] Colab links in the README's notebook table (step 5)
 - [ ] Allen runs one notebook on Colab end to end
 
 **4. Text**
@@ -46,7 +46,7 @@ Numbered tasks for tracking work. Each task has a permanent number; add new task
 - [x] Notebook layout (2026-10-20): title cell with a one-line subtitle (the PyMC Labs sentence); Colab cell; copyright ("2025–2026") and license (code MIT, text CC BY-NC-SA 4.0) in the last cell, replacing an empty one. The only H1 is the title. Same in both versions (made by the generator). nbconvert's timing metadata stripped (the generator drops it too)
 
 **5. README in the standard shape**
-- [ ] README rewritten
+- [x] README rewritten (2026-10-20): abstract (from the old overview), level (intermediate, Allen), length (about 90 minutes, Allen), outline, Colab table, data source, recording with its tag, running instructions, next steps (*Think Bayes*, BayesianDecisionAnalysis, the hub, and one line for the PyMC Labs course, Allen), license (code MIT, text CC BY-NC-SA 4.0). Author line only; the instructor bio dropped (Allen). No slides line (none known)
 
 **6. Site and visibility**
 - [ ] `jb/` site (none yet; GitHub Pages is off)
@@ -103,8 +103,8 @@ The notebook has 8 `pm.sample()` calls (default 1000 tune + 1000 draws, 4 chains
 
 (For Allen to decide.)
 
-1. Resolved 2026-10-20 (Allen): the title cell links the course page, https://www.pymc-labs.com/courses/applied-bayesian-modeling. PyMC Labs links in the README: still undecided (workshops plan).
-2. The README still says "Material for a workshop at PyData Global 2025" (step 5). Its setup section was rewritten in step 1.
+1. Resolved 2026-10-20 (Allen): the title cell links the course page, https://www.pymc-labs.com/courses/applied-bayesian-modeling. README (Allen, 2026-10-20): one line in "Next steps" linking the course.
+2. Resolved 2026-10-20: README rewritten (step 5).
 3. Resolved 2026-10-20: yes. The pymc-workshop commit of the same day is "Update for January workshop" (`bf7013e`); no tag (Decisions).
 4. Resolved 2026-10-20: `plan.md` "Future work" moved to Task 2.
 5. Resolved 2026-10-20 (Allen): reworded. "Its mean is about 9%, a little above the observed conversion rate, 8%, because the prior pulls it up. The 94% HDI extends from about 4% to 15%." (Exact for Beta(10, 97): mean 9.3%, HDI 4.4% to 14.6%.)

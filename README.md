@@ -2,97 +2,74 @@
 
 [![tests](https://github.com/AllenDowney/BDAwithPyMC/actions/workflows/tests.yml/badge.svg)](https://github.com/AllenDowney/BDAwithPyMC/actions/workflows/tests.yml)
 
+[Allen Downey](https://allendowney.com)
 
-[Here is the video of the workshop](https://www.youtube.com/watch?v=6yVIlWGNoGI) (PyData Global 2025). This is one of [my workshops and tutorials](https://allendowney.github.io/#workshops).
+**Beyond A/B Testing.** This hands-on workshop introduces practical Bayesian inference with PyMC, with a focus on A/B testing, decision-making under uncertainty, and hierarchical models. You'll learn how to build and interpret Bayesian models, compare alternatives with the probability of superiority instead of p-values, and use Thompson sampling to run adaptive experiments.
 
+These methods are useful wherever people run experiments and make decisions with data: marketing, healthcare, public policy, product design, and general data science.
 
-Material for a workshop at [PyData Global 2025](https://pydata.org/global2025)
+This is one of [my workshops and tutorials](https://allendowney.github.io/#workshops).
 
-**Bayesian Decision Analysis with PyMC: Beyond A/B Testing**
+**Level:** intermediate. You should be comfortable with Python and NumPy, plotting, and Jupyter notebooks. You don't need any background in Bayesian statistics or PyMC.
 
+**Length:** about 90 minutes.
 
-## Overview
+## Outline
 
-This hands-on tutorial introduces practical Bayesian inference using PyMC, with a focus on A/B testing, decision-making under uncertainty, and hierarchical modeling. Through real-world examples you'll learn how to build and interpret Bayesian models, evaluate competing hypotheses, and implement adaptive strategies such as Thompson sampling.
+1. **The beta-binomial model:** the conversion rate of an email campaign. A beta prior, a binomial likelihood, and a posterior distribution computed with PyMC; credible intervals; and why the prior matters when the dataset is small (a rookie who gets 3 hits in 3 at bats).
+2. **Bayesian bandits:** an A/B test of two versions of the email. The distribution of the difference, the probability of superiority, and Thompson sampling, which uses each version in proportion to the probability that it's better.
+3. **Hierarchical models:** sharing information between versions with hyperpriors, predictions for a new version, posterior predictive distributions, and a hierarchical model of batting averages for every player in Major League Baseball in 2023.
 
-These techniques are useful across domains (marketing, healthcare, public policy, UX, and general data science) for experimentation, decision-making, and evidence-based analysis.
+The notebook comes in two versions: one with blanks for the exercises, and one with solutions.
 
-## What you'll learn
-
-- How to formulate simple Bayesian models for A/B testing
-- How to interpret posterior distributions and high-density intervals
-- How to apply Thompson sampling for adaptive experiments
-- How to build hierarchical models for partial pooling and improved prediction
-- How to use PyMC and ArviZ for Bayesian modeling and model checking
-
-## Topics and Examples
-
-### Bayesian A/B Testing (Beta-Binomial)
-
-- Represent prior beliefs with the Beta distribution
-- Use Binomial likelihoods to model observed outcomes
-- Compute and interpret posterior distributions and credible intervals
-
-### Bayesian Bandits and Thompson Sampling
-
-- Estimate the probability that one version outperforms another (beyond p-values)
-- Use Thompson sampling to guide decisions in adaptive experiments
-- Simulate and visualize an adaptive email campaign example
-
-### Hierarchical Models (Partial Pooling)
-
-- Share information across variants using hierarchical priors
-- Use posterior predictive distributions to quantify uncertainty
-- Understand second-order probabilities and shrinkage
-
-### Hands-On Learning
-
-Participants follow along in Jupyter notebooks (hosted on Colab — no installation required). Exercises are embedded with guided solutions. Code relies on PyMC, ArviZ, and standard scientific Python libraries.
-
-### Prerequisites
-
-- Intermediate Python: basic familiarity with NumPy, plotting, and Jupyter notebooks
-- No prior Bayesian statistics or PyMC experience required
-
-### Instructor
-
-**Allen Downey** — Principal Data Scientist at PyMC Labs and Professor Emeritus at Olin College. Author of *Think Python*, *Think Bayes*, and *Probably Overthinking It*. Allen holds a Ph.D. in Computer Science from UC Berkeley and degrees from MIT.
-
-
-
-## Running the notebooks
-
-### On Colab (recommended)
-
-Colab needs no installation:
-
-- [Open the notebook (with blanks for the exercises) on Colab](https://colab.research.google.com/github/AllenDowney/BDAwithPyMC/blob/main/notebooks/01_beta_binomial.ipynb)
-- [Open the notebook (with solutions) on Colab](https://colab.research.google.com/github/AllenDowney/BDAwithPyMC/blob/main/solutions/01_beta_binomial.ipynb)
-
-Colab has everything the notebook needs except PreliZ, which the first code cell installs. The notebook downloads the data it needs.
+| Notebook | Exercises | Solutions |
+|---|---|---|
+| Bayesian Decision Analysis with PyMC | [Run on Colab](https://colab.research.google.com/github/AllenDowney/BDAwithPyMC/blob/main/notebooks/01_beta_binomial.ipynb) | [Run on Colab](https://colab.research.google.com/github/AllenDowney/BDAwithPyMC/blob/main/solutions/01_beta_binomial.ipynb) |
 
 The version with blanks raises errors until you do the exercises.
 
-### On your computer
+### Data
 
-Clone the repository (or [download it as a zip file](https://github.com/AllenDowney/BDAwithPyMC/archive/refs/heads/main.zip)):
+* Batting statistics for every player with at least one at bat in Major League Baseball in 2023: `data/batting_2023.csv`, from Bill Engels's [tutorial on Gaussian processes](https://github.com/bwengals/pydata_global_2024_GPs).
 
-```bash
-git clone https://github.com/AllenDowney/BDAwithPyMC.git
+## Recordings
+
+I presented this workshop at PyData Global 2025, and it was the first session of the PyMC Labs course [Applied Bayesian Modeling](https://www.pymc-labs.com/courses/applied-bayesian-modeling). The code in the video is not the current version; the tag after the link is the version of the code that goes with it.
+
+* [PyData Global 2025](https://www.youtube.com/watch?v=6yVIlWGNoGI): tag [`pydata-global-2025`](https://github.com/AllenDowney/BDAwithPyMC/tree/pydata-global-2025)
+
+## Running the notebooks
+
+The easiest way to run the notebook is on Colab: click one of the links above. You need a Google account, but you don't have to install anything. Colab has everything the notebook needs except PreliZ, which the first code cell installs, and the notebook downloads the data it needs.
+
+To run it on your own computer, you need Python 3.12 or later with Jupyter, PyMC 5, ArviZ, PreliZ, pandas, Matplotlib, and Graphviz. You can [download the code in this zip file](https://github.com/AllenDowney/BDAwithPyMC/archive/refs/heads/main.zip), or clone the repository:
+
+```
+git clone https://github.com/AllenDowney/BDAwithPyMC
 cd BDAwithPyMC
 ```
 
-Then either install the requirements with pip (Python 3.12 or later):
+Then install the packages with pip:
 
-```bash
+```
 pip install -r requirements-dev.txt
 ```
 
-or create a conda environment with [mamba](https://mamba.readthedocs.io/) (or conda):
+Or, if you use conda or mamba, create an environment:
 
-```bash
+```
 mamba env create -f environment.yml
 mamba activate BDAwithPyMC
 ```
 
-and run `jupyter lab`.
+Then run `jupyter lab` and open `notebooks/01_beta_binomial.ipynb`.
+
+## Next steps
+
+To go further, read [*Think Bayes*](https://allendowney.github.io/ThinkBayes2/), which is free online, or see [my other workshops](https://allendowney.github.io/#workshops). [Bayesian Decision Analysis](https://github.com/AllenDowney/BayesianDecisionAnalysis) is an earlier workshop on the same ideas, using grid methods instead of PyMC.
+
+For a live, guided course that starts with this material, see [Applied Bayesian Modeling](https://www.pymc-labs.com/courses/applied-bayesian-modeling) from PyMC Labs.
+
+## License
+
+The code is available under the [MIT License](LICENSE). The text is available under the [Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License](https://creativecommons.org/licenses/by-nc-sa/4.0/).
