@@ -28,6 +28,8 @@ The notebook comes in two versions: one with blanks for the exercises, and one w
 
 The version with blanks raises errors until you do the exercises.
 
+The notebook with solutions is also on [the workshop site](https://allendowney.github.io/BDAwithPyMC/).
+
 ### Data
 
 * Batting statistics for every player with at least one at bat in Major League Baseball in 2023: `data/batting_2023.csv`, from Bill Engels's [tutorial on Gaussian processes](https://github.com/bwengals/pydata_global_2024_GPs).

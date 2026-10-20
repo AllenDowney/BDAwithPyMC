@@ -49,10 +49,12 @@ Numbered tasks for tracking work. Each task has a permanent number; add new task
 - [x] README rewritten (2026-10-20): abstract (from the old overview), level (intermediate, Allen), length (about 90 minutes, Allen), outline, Colab table, data source, recording with its tag, running instructions, next steps (*Think Bayes*, BayesianDecisionAnalysis, the hub, and one line for the PyMC Labs course, Allen), license (code MIT, text CC BY-NC-SA 4.0). Author line only; the instructor bio dropped (Allen). No slides line (none known)
 
 **6. Site and visibility**
-- [ ] `jb/` site (none yet; GitHub Pages is off)
-- [ ] SEO checklist in a test build; Allen approves the descriptions
-- [ ] Publish; `Sitemap:` line in `~/AllenDowney.github.io/robots.txt`; Search Console
-- [ ] Hub entry, repo description and topics
+- [x] `jb/` (Jupyter Book 1, 2026-10-20), from the BayesMadeSimple template: `build.sh [publish]` runs `prep_notebooks.py` (copies `solutions/01_beta_binomial.ipynb` in as `beta_binomial.ipynb`, renames its H1 to "A/B testing, bandits, and hierarchical models" so it differs from the site title, adds the page description) and `jb build`. No execution at build time (`execute_notebooks: "off"`): the solutions are saved with outputs and tested in CI. Site tools installed with `mamba install` (the full `environment.yml` solve times out); it brings nbclient 0.6.8, which nbmake 1.5.5 still works with
+- [x] SEO checklist in a test build (scratch copy): sitemap lists only the 2 pages; each page has one description, one `og:description`, `rel="canonical"`; page titles differ from the site title; page-view counter in `extra_footer`; social image is the *Think Bayes* 2e cover (200); all 26 plots and 3 model graphs render
+- [x] Allen approved the two descriptions and the page title (2026-10-20)
+- [x] Published (2026-10-20): `./build.sh publish` to `gh-pages` (Pages turned on with source `gh-pages` /, no Jekyll `_config.yml` to delete); landing page, notebook page and sitemap return 200; `Sitemap:` line in `~/AllenDowney.github.io/robots.txt` (pushed)
+- [ ] Allen submits the sitemap in Search Console (https://allendowney.github.io/BDAwithPyMC/sitemap.xml); then tick in GreenTeaPress Task 22
+- [x] Hub entry now links the site instead of the repo (`~/AllenDowney.github.io/index.html`, pushed). Repo website set to the site and topic `jupyter-book` added on GitHub and in GreenTeaPress `scripts/repo_about.sh` (BDAwithPyMC removed from `NO_SITE`; left uncommitted there, as in CompStats). Description unchanged. README links the site
 
 **7. Close**
 - [ ] Tag `2026-refresh`; note in GreenTeaPress Task 24
