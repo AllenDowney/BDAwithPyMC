@@ -11,6 +11,10 @@ Allen Downey's workshop "Bayesian Decision Analysis with PyMC: Beyond A/B Testin
 
 Data: `data/batting_2023.csv` (MLB batting, 2023).
 
+## Site
+
+`jb/` builds the Jupyter Book site at `allendowney.github.io/BDAwithPyMC/` (`cd jb; ./build.sh [publish]`, published to `gh-pages`). `prep_notebooks.py` copies the solutions in as `beta_binomial.ipynb`, renames the H1 and holds the page description. The build doesn't execute the notebook: re-run and save the solutions first. Delete `jb/_build/` before publishing. Template: BayesMadeSimple.
+
 ## Tags
 
 - `pydata-global-2025`: the code in the PyData Global 2025 recording (the last commit before the event).

@@ -211,3 +211,7 @@ __marimo__/
 # downloaded by the notebooks
 notebooks/batting_2023.csv
 solutions/batting_2023.csv
+
+# site build
+jb/_build/
+jb/beta_binomial.ipynb
